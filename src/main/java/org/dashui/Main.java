@@ -22,37 +22,37 @@ public class Main {
         System.out.println("[5] Random");
         System.out.println("[6] View Game History");
         System.out.println("[0] Exit");
-        int opt = Integer.valueOf(scanner.nextLine());
+        int opt = Integer.parseInt(scanner.nextLine());
 
-        switch (opt) {
-            default:
-                System.out.println("[0] EASY");
-                System.out.println("[1] MEDIUM");
-                System.out.println("[2] HARD");
+        if (opt == 0) {
+            System.exit(0);
+        }
+        else {
+            System.out.println("[0] EASY");
+            System.out.println("[1] MEDIUM");
+            System.out.println("[2] HARD");
 
-                int difficultyOpt = Integer.valueOf(scanner.nextLine());
+            int difficultyOpt = Integer.parseInt(scanner.nextLine());
 
-                int score = start(GameMode.fromInt(opt), Difficulty.fromInt(difficultyOpt));
-                System.out.printf("Your score was %d", score);
-                break;
-            case 0:
-                System.exit(0);
-                break;
+            int score = start(GameMode.fromInt(opt), Difficulty.fromInt(difficultyOpt));
+            System.out.printf("Your score was %d", score);
         }
     }
 
     public static int start(GameMode gameMode, Difficulty difficulty) {
         int score = 0;
+        int[] minMax = getMinMax(difficulty);
 
         for (int i = 0; i < ATTEMPTS; i++) {
-            int num1 = random.nextInt(0, 11);
-            int num2 = random.nextInt(1, 11);
+            int num1 = getRandomNumber(minMax[0], minMax[1]);
+            int num2 = gameMode == GameMode.DIVISION ?
+                    getDivisor(num1, minMax[0], minMax[1]) : getRandomNumber(minMax[0], minMax[1]);
             char operation = getOperation(gameMode);
 
             String question = String.format("%s %s %s = ?", num1, operation, num2);
             System.out.println(question);
 
-            int answer = Integer.valueOf(scanner.nextLine());
+            int answer = Integer.parseInt(scanner.nextLine());
 
             if (answer == calculateResult(operation, num1, num2)) {
                 System.out.println("Correct!");
@@ -83,5 +83,25 @@ public class Main {
             case DIVISION -> '/';
             case RANDOM -> "+-*/".toCharArray()[random.nextInt(4)];
         };
+    }
+
+    private static int getRandomNumber(int min, int max) {
+        return random.nextInt(min, max);
+    }
+
+    private static int[] getMinMax(Difficulty difficulty) {
+        return switch (difficulty) {
+            case EASY -> new int[]{0, 10};
+            case MEDIUM -> new int[]{10, 50};
+            case HARD -> new int[]{50, 100};
+        };
+    }
+
+    private static int getDivisor(int num1, int min, int max) {
+        int num2 = getRandomNumber(min, max);
+        while(num2 == 0 || num1 % num2 != 0) {
+            num2 = getRandomNumber(min, max);
+        }
+        return num2;
     }
 }
