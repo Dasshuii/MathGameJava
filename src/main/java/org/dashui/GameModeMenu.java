@@ -1,7 +1,7 @@
 package org.dashui;
 
 public class GameModeMenu extends Menu{
-    protected String[] options = new String[]{"Addition", "Subtraction", "Multiplication", "Division", "Random"};
+    private String[] options = new String[]{"Addition", "Subtraction", "Multiplication", "Division", "Random"};
 
     @Override
     public void show() {

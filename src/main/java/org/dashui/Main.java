@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         GameModeMenu gameModeMenu = new GameModeMenu();
+        DifficultyMenu difficultyMenu = new DifficultyMenu();
 
         System.out.println("Welcome to Math Game!");
         String name = Input.getName("What's your name: ");
@@ -23,10 +24,7 @@ public class Main {
             System.exit(0);
         }
         else {
-            System.out.println("[0] EASY");
-            System.out.println("[1] MEDIUM");
-            System.out.println("[2] HARD");
-
+            difficultyMenu.show();
             int difficultyOpt = Integer.parseInt(scanner.nextLine());
 
             int score = start(GameMode.fromInt(opt), Difficulty.fromInt(difficultyOpt));
