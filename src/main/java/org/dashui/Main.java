@@ -10,10 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Math Game!");
-        System.out.print("What's your name: ");
-        String name = scanner.nextLine();
+        String name = Input.getName("What's your name: ");
 
-        System.out.printf("Hello %s!", name);
+        System.out.printf("Hello %s!\n", name);
         System.out.println("=== GAME MENU ===");
         System.out.println("[1] Addition");
         System.out.println("[2] Subtraction");
@@ -44,10 +43,11 @@ public class Main {
         int[] minMax = getMinMax(difficulty);
 
         for (int i = 0; i < ATTEMPTS; i++) {
-            int num1 = getRandomNumber(minMax[0], minMax[1]);
-            int num2 = gameMode == GameMode.DIVISION ?
-                    getDivisor(num1, minMax[0], minMax[1]) : getRandomNumber(minMax[0], minMax[1]);
             char operation = getOperation(gameMode);
+            int num1 = getRandomNumber(minMax[0], minMax[1]);
+            int num2 = operation == '/' ?
+                    getDivisor(num1, minMax[0], minMax[1]) : getRandomNumber(minMax[0], minMax[1]);
+
 
             String question = String.format("%s %s %s = ?", num1, operation, num2);
             System.out.println(question);
