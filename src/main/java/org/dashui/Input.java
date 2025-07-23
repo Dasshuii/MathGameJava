@@ -6,7 +6,7 @@ public class Input {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String getUserInput(String prompt) {
-        System.out.println(prompt);
+        System.out.print(prompt);
         return scanner.nextLine().strip();
     }
 

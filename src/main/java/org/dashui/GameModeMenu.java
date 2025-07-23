@@ -8,7 +8,7 @@ public class GameModeMenu extends Menu{
         for (int i = 0; i < options.length; i++) {
             System.out.printf("[%d] %s\n", i + 1, options[i]);
         }
-        System.out.printf("[%d] View Game History\n", options.length);
+        System.out.printf("[%d] View Game History\n", options.length + 1);
         System.out.println("[0] Exit");
     }
 }
