@@ -9,18 +9,14 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        GameModeMenu gameModeMenu = new GameModeMenu();
+
         System.out.println("Welcome to Math Game!");
         String name = Input.getName("What's your name: ");
 
         System.out.printf("Hello %s!\n", name);
         System.out.println("=== GAME MENU ===");
-        System.out.println("[1] Addition");
-        System.out.println("[2] Subtraction");
-        System.out.println("[3] Multiplication");
-        System.out.println("[4] Division");
-        System.out.println("[5] Random");
-        System.out.println("[6] View Game History");
-        System.out.println("[0] Exit");
+        gameModeMenu.show();
         int opt = Integer.parseInt(scanner.nextLine());
 
         if (opt == 0) {
