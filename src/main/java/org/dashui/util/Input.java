@@ -1,4 +1,4 @@
-package org.dashui;
+package org.dashui.util;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package org.dashui;
+package org.dashui.models.enums;
 
 public enum GameMode {
     ADDITION(1),

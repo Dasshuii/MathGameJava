@@ -1,4 +1,4 @@
-package org.dashui;
+package org.dashui.models.enums;
 
 public enum Difficulty {
     EASY(0),

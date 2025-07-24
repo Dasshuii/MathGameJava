@@ -1,5 +1,10 @@
 package org.dashui;
 
+import org.dashui.models.GameRecord;
+import org.dashui.models.enums.Difficulty;
+import org.dashui.models.enums.GameMode;
+import org.dashui.util.Input;
+
 import java.util.Random;
 
 public class Game {

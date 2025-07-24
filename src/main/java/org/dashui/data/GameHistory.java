@@ -1,4 +1,6 @@
-package org.dashui;
+package org.dashui.data;
+
+import org.dashui.models.GameRecord;
 
 import java.util.ArrayList;
 

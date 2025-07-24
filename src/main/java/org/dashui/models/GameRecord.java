@@ -1,4 +1,4 @@
-package org.dashui;
+package org.dashui.models;
 
 public class GameRecord {
     private String name;
@@ -7,7 +7,7 @@ public class GameRecord {
     private String difficulty;
     private int timeInSeconds;
 
-    GameRecord() {
+    public GameRecord() {
         this.name = null;
         this.score = 0;
         this.gameMode = null;
@@ -15,7 +15,7 @@ public class GameRecord {
         this.timeInSeconds = 0;
     }
 
-    GameRecord(String name, int score, String gameMode, String difficulty, int timeInSeconds) {
+    public GameRecord(String name, int score, String gameMode, String difficulty, int timeInSeconds) {
         this.name = name;
         this.score = score;
         this.gameMode = gameMode;

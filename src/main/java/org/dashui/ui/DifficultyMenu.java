@@ -1,4 +1,4 @@
-package org.dashui;
+package org.dashui.ui;
 
 public class DifficultyMenu extends Menu {
     private String[] options = new String[]{"EASY", "MEDIUM", "HARD"};
