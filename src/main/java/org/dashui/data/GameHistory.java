@@ -21,4 +21,8 @@ public class GameHistory {
             System.out.println(record.toString());
         }
     }
+
+    public final ArrayList<GameRecord> getRecords() {
+        return records;
+    }
 }

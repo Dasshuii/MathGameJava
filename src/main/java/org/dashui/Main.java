@@ -1,5 +1,6 @@
 package org.dashui;
 
+import org.dashui.data.FileManager;
 import org.dashui.data.GameHistory;
 import org.dashui.models.GameRecord;
 import org.dashui.models.enums.Difficulty;
@@ -14,6 +15,7 @@ public class Main {
         DifficultyMenu difficultyMenu = new DifficultyMenu();
         Game game = new Game();
         GameHistory history = new GameHistory();
+        FileManager.initFile();
 
         boolean exit = false;
 
@@ -45,7 +47,7 @@ public class Main {
                     break;
             }
         } while(!exit);
-
+        FileManager.saveRecords(history.getRecords());
     }
 
     private static String welcome() {
