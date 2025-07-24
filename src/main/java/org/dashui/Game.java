@@ -6,10 +6,11 @@ public class Game {
     private final int ATTEMPTS = 5;
     private final Random random = new Random();
 
-    public int start(GameMode gameMode, Difficulty difficulty) {
+    public GameRecord start(GameMode gameMode, Difficulty difficulty) {
         int score = 0;
         int[] minMax = getMinMax(difficulty);
 
+        long start = System.currentTimeMillis();
         for (int i = 0; i < ATTEMPTS; i++) {
             char operation = getOperation(gameMode);
             int num1 = getRandomNumber(minMax[0], minMax[1]);
@@ -28,9 +29,13 @@ public class Game {
             } else
                 System.out.println("Incorrect :(");
         }
+        long finish = System.currentTimeMillis();
 
         System.out.println("Thanks for playing!");
-        return score;
+        GameRecord gameRecord = new GameRecord();
+        gameRecord.setTimeInSeconds((int)(finish - start) / 1000);
+        gameRecord.setScore(score);
+        return gameRecord;
     }
 
     private int calculateResult(char operation, int num1, int num2) {

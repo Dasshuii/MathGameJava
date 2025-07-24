@@ -5,20 +5,39 @@ public class Main {
         GameModeMenu gameModeMenu = new GameModeMenu();
         DifficultyMenu difficultyMenu = new DifficultyMenu();
         Game game = new Game();
+        GameHistory history = new GameHistory();
+
         boolean exit = false;
+
+
+        String name = welcome();
         do {
-            String name = welcome();
             gameModeMenu.show();
             int opt = Integer.parseInt(Input.getUserInput("opt: "));
 
-            if (opt == 0) exit = true;
+            switch (opt) {
+                case 0:
+                    exit = true;
+                    break;
+                case 6:
+                    history.showGameHistory();
+                    break;
+                default:
+                    difficultyMenu.show();
+                    int difficultyOpt = Integer.parseInt(Input.getUserInput("opt: "));
+                    GameMode gameMode = GameMode.fromInt(opt);
+                    Difficulty difficulty = Difficulty.fromInt(difficultyOpt);
 
-            difficultyMenu.show();
-            int difficultyOpt = Integer.parseInt(Input.getUserInput("opt: "));
-            int score = game.start(GameMode.fromInt(opt), Difficulty.fromInt(difficultyOpt));
-            System.out.printf("Your score was %d\n", score);
-            exit = true;
+                    GameRecord record = game.start(gameMode, difficulty);
+                    System.out.printf("Your score was %d\n", record.getScore());
+                    record.setName(name);
+                    record.setGameMode(String.valueOf(gameMode));
+                    record.setDifficulty(String.valueOf(difficulty));
+                    history.addRecord(record);
+                    break;
+            }
         } while(!exit);
+
     }
 
     private static String welcome() {
