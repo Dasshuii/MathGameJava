@@ -1,14 +1,29 @@
 package org.dashui.ui;
 
-public class GameModeMenu extends Menu {
-    private String[] options = new String[]{"Addition", "Subtraction", "Multiplication", "Division", "Random"};
+import org.dashui.models.enums.GameMode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class GameModeMenu extends Menu {
     @Override
-    public void show() {
-        for (int i = 0; i < options.length; i++) {
-            System.out.printf("[%d] %s\n", i + 1, options[i]);
-        }
-        System.out.printf("[%d] View Game History\n", options.length + 1);
-        System.out.println("[0] Exit");
+    public void configure() {
+        startIndex = 0;
+        options = new ArrayList<>();
+        options.add("Exit");
+
+        options.addAll(
+                Arrays.stream(GameMode.values())
+                        .map(Enum::name)
+                        .collect(Collectors.toList())
+        );
+
+        options.add("View Game History");
+    }
+
+    private String capitalize(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return Character.toUpperCase(str.charAt(0)) + str.substring(1);
     }
 }

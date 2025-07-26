@@ -1,12 +1,16 @@
 package org.dashui.ui;
 
-public class DifficultyMenu extends Menu {
-    private String[] options = new String[]{"EASY", "MEDIUM", "HARD"};
+import org.dashui.models.enums.Difficulty;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class DifficultyMenu extends Menu {
     @Override
-    public void show() {
-        for (int i = 0; i < options.length; i++) {
-            System.out.printf("[%d] %s\n", i, options[i]);
-        }
+    public void configure() {
+        startIndex = 0;
+        options = Arrays.stream(Difficulty.values())
+                .map(Enum::name)
+                .collect(Collectors.toList());
     }
 }

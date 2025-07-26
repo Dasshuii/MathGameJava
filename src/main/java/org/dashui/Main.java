@@ -9,6 +9,8 @@ import org.dashui.ui.DifficultyMenu;
 import org.dashui.ui.GameModeMenu;
 import org.dashui.util.Input;
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
         GameModeMenu gameModeMenu = new GameModeMenu();
@@ -17,42 +19,44 @@ public class Main {
         GameHistory history = new GameHistory();
         FileManager.initFile();
 
-        boolean exit = false;
-
-
         String name = welcome();
-        do {
+        while(true) {
             gameModeMenu.show();
-            int opt = Integer.parseInt(Input.getUserInput("opt: "));
+            int opt = Input.getInt("Option: ", 0, 7);
 
-            switch (opt) {
-                case 0:
-                    exit = true;
-                    break;
-                case 6:
-                    history.showGameHistory();
-                    break;
-                default:
-                    difficultyMenu.show();
-                    int difficultyOpt = Integer.parseInt(Input.getUserInput("opt: "));
-                    GameMode gameMode = GameMode.fromInt(opt);
-                    Difficulty difficulty = Difficulty.fromInt(difficultyOpt);
+            if (opt == 0) break;
 
-                    GameRecord record = game.start(gameMode, difficulty);
-                    System.out.printf("Your score was %d\n", record.getScore());
-                    record.setName(name);
-                    record.setGameMode(String.valueOf(gameMode));
-                    record.setDifficulty(String.valueOf(difficulty));
-                    history.addRecord(record);
-                    break;
+            if (opt == 6) {
+                history.showGameHistory();
+                continue;
             }
-        } while(!exit);
+
+            GameMode gameMode = GameMode.fromInt(opt);
+            if (gameMode == null) {
+                System.out.println("Invalid game mode selected.");
+                continue;
+            }
+
+            difficultyMenu.show();
+            int difficultyOpt = Input.getInt("Difficulty: ", 0, 2);
+
+            Difficulty difficulty = Difficulty.fromInt(difficultyOpt);
+            if (difficulty == null) {
+                System.out.println("Invalid difficulty selected.");
+                continue;
+            }
+
+            GameRecord record = game.start(name, gameMode, difficulty);
+            System.out.printf("Your score was %d\n", record.getScore());
+
+            history.addRecord(record);
+        }
         FileManager.saveRecords(history.getRecords());
     }
 
     private static String welcome() {
         System.out.println("Welcome to Math Game!");
-        String name = Input.getName("What's your name: ");
+        String name = Input.getNonEmptyString("What's your name: ");
         System.out.printf("Hello %s!\n", name);
         return name;
     }

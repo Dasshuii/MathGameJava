@@ -1,11 +1,21 @@
 package org.dashui.models.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Difficulty {
     EASY(0),
     MEDIUM(1),
     HARD(2);
 
-    private int value;
+    private final int value;
+    private static final Map<Integer, Difficulty> difficultyMap = new HashMap<>();
+
+    static {
+        for (Difficulty difficulty : values()) {
+            difficultyMap.put(difficulty.value, difficulty);
+        }
+    }
 
     Difficulty(int value) {
         this.value = value;
@@ -16,11 +26,6 @@ public enum Difficulty {
     }
 
     public static final Difficulty fromInt(int value) {
-        for (Difficulty difficulty : Difficulty.values()) {
-            if (difficulty.value == value) {
-                return difficulty;
-            }
-        }
-        return null;
+        return difficultyMap.get(value);
     }
 }

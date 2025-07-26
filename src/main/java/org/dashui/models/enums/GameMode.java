@@ -1,5 +1,8 @@
 package org.dashui.models.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum GameMode {
     ADDITION(1),
     SUBTRACTION(2),
@@ -7,7 +10,14 @@ public enum GameMode {
     DIVISION(4),
     RANDOM(5);
 
-    private int value;
+    private final int value;
+    private static final Map<Integer, GameMode> gameModeMap = new HashMap<>();
+
+    static {
+        for (GameMode gameMode : values()) {
+            gameModeMap.put(gameMode.value, gameMode);
+        }
+    }
 
     GameMode(int value) {
         this.value = value;
@@ -18,11 +28,6 @@ public enum GameMode {
     }
 
     public static final GameMode fromInt(int value) {
-        for (GameMode gameMode : GameMode.values()) {
-            if (gameMode.value == value) {
-                return gameMode;
-            }
-        }
-        return null;
+        return gameModeMap.get(value);
     }
 }
