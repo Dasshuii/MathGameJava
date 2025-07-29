@@ -25,6 +25,14 @@ public final class GameRecord {
         return String.format("%s, %d, %s, %s, %d", name, score, gameMode.name(), difficulty.name(), timeInSeconds);
     }
 
+    public String toCSV() {
+        return String.format("%s,%d,%s,%s,%d", name, score, gameMode.name(), difficulty.name(), timeInSeconds);
+    }
+
+    public static GameRecord fromCSV(String[] record) {
+        return new GameRecord(record[0], Integer.valueOf(record[1]), GameMode.valueOf(record[2]), Difficulty.valueOf(record[3]), Integer.valueOf(record[4]));
+    }
+
     public void setName(String name) {
         this.name = name;
     }

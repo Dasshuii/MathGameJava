@@ -3,9 +3,15 @@ package org.dashui.data;
 import org.dashui.models.GameRecord;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GameHistory {
-    private ArrayList<GameRecord> records = new ArrayList<>();
+    private final List<GameRecord> records;
+
+    public GameHistory() {
+        this.records = new ArrayList<>(FileManager.loadRecords());
+    }
 
     public void addRecord(GameRecord gameRecord) {
         records.add(gameRecord);
@@ -22,7 +28,7 @@ public class GameHistory {
         }
     }
 
-    public final ArrayList<GameRecord> getRecords() {
-        return records;
+    public final List<GameRecord> getRecords() {
+        return Collections.unmodifiableList(records);
     }
 }
