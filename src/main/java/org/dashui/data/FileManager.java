@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
-    private static final String path = "C:\\Users\\naomy\\IdeaProjects\\MathGameJava\\src\\records.csv";
+    private static final String path = "records.csv";
 
     public static void saveRecords(List<GameRecord> gameRecords) {
         try (FileWriter myWriter = new FileWriter(path)) {;
@@ -39,7 +39,7 @@ public class FileManager {
             System.out.println("Something went wrong.");
             e.printStackTrace();
         }
-        return new ArrayList<>();
+        return gameRecords;
     }
 
     public static void initFile() {
