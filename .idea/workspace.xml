@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4418efa0-102f-48dc-a22b-395e292feeae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/dashui/data/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dashui/data/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dashui/data/GameHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dashui/data/GameHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dashui/models/GameRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dashui/models/GameRecord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1753810663611</updated>
-      <workItem from="1753810664765" duration="2680000" />
+      <workItem from="1753810664765" duration="2793000" />
     </task>
     <servers />
   </component>

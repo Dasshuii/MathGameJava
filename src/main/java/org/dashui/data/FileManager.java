@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
-    private static final String path = "C:\\Users\\naomy\\IdeaProjects\\MathGameJava\\src\\records.txt";
+    private static final String path = "C:\\Users\\naomy\\IdeaProjects\\MathGameJava\\src\\records.csv";
 
     public static void saveRecords(List<GameRecord> gameRecords) {
         try (FileWriter myWriter = new FileWriter(path)) {;
